@@ -4,6 +4,7 @@ import RecycleImage from "../assets/media/images/Recycle.ico";
 import ExplorerImage from "../assets/media/images/Explorer.ico";
 import OpenedWindow from "./OpenedWindow";
 import { useState } from "react";
+import Message from "./Message";
 
 export default function Desktop() {
     const [isShowFolder, setIsShowFolder] = useState(false);
@@ -30,6 +31,7 @@ export default function Desktop() {
             {createFolder(ExplorerImage, "Контакты")}
             {createFolder(RecycleImage, "Recycle Bin")}
 
+            <Message />
             <OpenedWindow show={isShowFolder} setShow={showFolder} />
         </div>
     );

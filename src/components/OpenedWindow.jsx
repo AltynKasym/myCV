@@ -3,6 +3,9 @@ import Drive from "../assets/media/images/Drive.ico";
 import DiscDrive from "../assets/media/images/DiscDrive.ico";
 import ControlPanel from "../assets/media/images/ControlPanel.ico";
 import Printer from "../assets/media/images/Printers.ico";
+import Collaps from "../assets/media/images/collaps.jpg";
+import Maximize from "../assets/media/images/maximize.jpg";
+import Close from "../assets/media/images/close.jpg";
 export default function OpenedWindow({ show, setShow }) {
     function createFolder(src, name) {
         return (
@@ -37,11 +40,13 @@ export default function OpenedWindow({ show, setShow }) {
                     <h2 className="window__header-title">Мой компьютер</h2>
                 </div>
                 <div className="window__buttons">
-                    <div className="window__btn press-btn">–</div>
-                    <div className="window__btn press-btn">+</div>
-                    <div className="window__btn press-btn" onClick={setShow}>
-                        X
-                    </div>
+                    <img className="window__btn" src={Collaps} />
+                    <img className="window__btn" src={Maximize} />
+                    <img
+                        className="window__btn"
+                        src={Close}
+                        onClick={setShow}
+                    />
                 </div>
             </div>
 
@@ -54,11 +59,11 @@ export default function OpenedWindow({ show, setShow }) {
                 </ul>
             </div>
             <div className="window__main">
-                <div onClick={() => alert(55)}>
+                <div onDoubleClick={() => alert(55)}>
                     {createFolder(Diskette, "Диск 3.5(A)")}
                 </div>
 
-                <div onClick={() => alert(66)}>
+                <div onDoubleClick={() => alert(66)}>
                     {createFolder(Drive, "Win95 (C:)")}
                 </div>
                 {createFolder(DiscDrive, "New (D:)")}
