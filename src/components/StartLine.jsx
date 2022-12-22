@@ -4,7 +4,7 @@ import StartWindow from "./StartWindow";
 
 export default function StartLine() {
     return (
-        <div class="footer-line">
+        <div className="footer-line">
             <StartButton />
         </div>
     );

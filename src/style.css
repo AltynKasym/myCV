@@ -66,7 +66,7 @@ li {
     font-weight: 400;
     color: #fff;
 }
-.window__header-title::before {
+.window__header-titlee::before {
     margin-bottom: -2px;
     margin-right: 3px;
     padding: 0;
@@ -98,11 +98,12 @@ li {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    gap: 5px;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    height: 70%;
-    width: 98.5%;
-    padding: 10px;
+    /* height: 70%;
+    width: 98.5%; */
+    padding: 20px 10px;
     background-color: #fff;
     margin: 3px;
     border-bottom: 2px solid #e2e2e2;
@@ -404,7 +405,8 @@ figcaption {
     top: 20vh;
     left: 20%;
     width: 350px;
-    height: 250px;
+    padding-bottom: 4px;
+    /* height: 250px; */
 }
 
 .underline {

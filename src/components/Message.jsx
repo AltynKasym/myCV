@@ -48,19 +48,23 @@ const Button = styled.img`
 const Footer = styled.div`
     text-align: center;
 `;
-export default function Message() {
+export default function Message({ closeWindow, messageText }) {
     return (
         <div>
             <Window>
                 <Header>
                     <Title>Вставьте Диск</Title>
-                    <img src={Close} className="window__btn" />
+                    <img
+                        src={Close}
+                        className="window__btn"
+                        onClick={() => closeWindow(false)}
+                    />
                 </Header>
                 <Body>
                     <img src={Error} alt="" />
-                    <Text>Пожалуйста, поставьте дискету и нажмите OK</Text>
+                    <Text>{messageText}</Text>
                 </Body>
-                <Footer>
+                <Footer onClick={() => closeWindow(false)}>
                     <Button src={OkButton} />
                 </Footer>
             </Window>

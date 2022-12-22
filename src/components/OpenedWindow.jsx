@@ -3,9 +3,11 @@ import Drive from "../assets/media/images/Drive.ico";
 import DiscDrive from "../assets/media/images/DiscDrive.ico";
 import ControlPanel from "../assets/media/images/ControlPanel.ico";
 import Printer from "../assets/media/images/Printers.ico";
-import Collaps from "../assets/media/images/collaps.jpg";
-import Maximize from "../assets/media/images/maximize.jpg";
-import Close from "../assets/media/images/close.jpg";
+
+import Message from "./Message";
+import { useState } from "react";
+import WindowFrame from "./WindowFrame";
+
 export default function OpenedWindow({ show, setShow }) {
     function createFolder(src, name) {
         return (
@@ -19,61 +21,46 @@ export default function OpenedWindow({ show, setShow }) {
             </li>
         );
     }
-    function createMenu(first, other) {
-        return (
-            <li className="window__header-function-text function__btn">
-                <span className="underline">{first}</span>
-                {other}
-            </li>
-        );
+
+    const [isShowWindow, setIsShowWindow] = useState(false);
+
+    function setWindowStatus(status) {
+        setIsShowWindow(status);
     }
     return (
-        <div
-            className={
-                show
-                    ? "myComp-window window myComp-window-vis"
-                    : "myComp-window window"
-            }
-        >
-            <div className="window__header">
-                <div className="move">
-                    <h2 className="window__header-title">Мой компьютер</h2>
-                </div>
-                <div className="window__buttons">
-                    <img className="window__btn" src={Collaps} />
-                    <img className="window__btn" src={Maximize} />
-                    <img
-                        className="window__btn"
-                        src={Close}
-                        onClick={setShow}
-                    />
-                </div>
-            </div>
+        <>
+            <div
+                className={
+                    show
+                        ? "myComp-window window myComp-window-vis"
+                        : "myComp-window window"
+                }
+            >
+                <WindowFrame name="Мой компьютер" setShow={setShow}>
+                    <div className="window__main">
+                        <div onDoubleClick={() => setWindowStatus(true)}>
+                            {createFolder(Diskette, "Диск 3.5(A)")}
+                        </div>
 
-            <div>
-                <ul className="window__header-function">
-                    {createMenu("Ф", "айл")}
-                    {createMenu("П", "равка")}
-                    {createMenu("В", "ид")}
-                    {createMenu("П", "омощь")}
-                </ul>
+                        <div>{createFolder(Drive, "Win95 (C:)")}</div>
+                        <div onDoubleClick={() => setWindowStatus(true)}>
+                            {createFolder(DiscDrive, "New (D:)")}
+                        </div>
+                        {createFolder(ControlPanel, "Панель управления")}
+                        {createFolder(Printer, "Принтеры")}
+                    </div>
+                </WindowFrame>
             </div>
-            <div className="window__main">
-                <div onDoubleClick={() => alert(55)}>
-                    {createFolder(Diskette, "Диск 3.5(A)")}
-                </div>
-
-                <div onDoubleClick={() => alert(66)}>
-                    {createFolder(Drive, "Win95 (C:)")}
-                </div>
-                {createFolder(DiscDrive, "New (D:)")}
-                {createFolder(ControlPanel, "Панель управления")}
-                {createFolder(Printer, "Принтеры")}
+            <div
+                style={
+                    isShowWindow ? { display: "block" } : { display: "none" }
+                }
+            >
+                <Message
+                    closeWindow={setWindowStatus}
+                    messageText="Пожалуйста, поставьте диск и нажмите OK"
+                />
             </div>
-            <div className="window__footer">
-                <div className="area">5 объектов</div>
-                <div className="area"></div>
-            </div>
-        </div>
+        </>
     );
 }
