@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/myCV/static/css/main.711e39b4.css",
+    "main.js": "/myCV/static/js/main.8cbc4c7e.js",
+    "static/js/787.ac35a09f.chunk.js": "/myCV/static/js/787.ac35a09f.chunk.js",
+    "static/media/close.jpg": "/myCV/static/media/close.8c3bf337da69d43cc308.jpg",
+    "static/media/M8pt.woff2": "/myCV/static/media/M8pt.04f730dd167c8385b694.woff2",
+    "static/media/ControlPanel.ico": "/myCV/static/media/ControlPanel.f7ac6cbe5db784ccd4a5.ico",
+    "static/media/DiscDrive.ico": "/myCV/static/media/DiscDrive.4d578cf7d52dfd864023.ico",
+    "static/media/Diskette.ico": "/myCV/static/media/Diskette.bd4c01624faae120a3f9.ico",
+    "static/media/Documents_Folder.ico": "/myCV/static/media/Documents_Folder.a25c2318f58b12f9b619.ico",
+    "static/media/Drive.ico": "/myCV/static/media/Drive.730f059c1cf72046774b.ico",
+    "static/media/Explorer.ico": "/myCV/static/media/Explorer.2c2ec166c7420d13f9ee.ico",
+    "static/media/Folder.ico": "/myCV/static/media/Folder.ffd669e35265ccd75be5.ico",
+    "static/media/HelpBook.ico": "/myCV/static/media/HelpBook.cd8b66191bd81bd8a537.ico",
+    "static/media/MyComputer.ico": "/myCV/static/media/MyComputer.4d2bb9d61e228424f9f1.ico",
+    "static/media/Network.ico": "/myCV/static/media/Network.89ecd0d696221ff4638f.ico",
+    "static/media/Printers.ico": "/myCV/static/media/Printers.efb3fea198a858a42ced.ico",
+    "static/media/ProgramFolder.ico": "/myCV/static/media/ProgramFolder.cc3a60db259641ed1df0.ico",
+    "static/media/ProgramWait.ico": "/myCV/static/media/ProgramWait.654123c3b2b5fc1893e4.ico",
+    "static/media/Recycle.ico": "/myCV/static/media/Recycle.c69e344b00d3a9f5dd76.ico",
+    "static/media/Search.ico": "/myCV/static/media/Search.1141eb13fdc9af673150.ico",
+    "static/media/Settings.ico": "/myCV/static/media/Settings.12d20a239dbf3692d264.ico",
+    "static/media/TurnOff.ico": "/myCV/static/media/TurnOff.67075a0945097fd32311.ico",
+    "static/media/Volume.ico": "/myCV/static/media/Volume.5b20fb56ba4c9ec08a45.ico",
+    "static/media/Windows.ico": "/myCV/static/media/Windows.f0127d3e45cd17f124f7.ico",
+    "static/media/resume.ico": "/myCV/static/media/resume.ecf4a89d485ad874542e.ico",
+    "index.html": "/myCV/index.html",
+    "main.711e39b4.css.map": "/myCV/static/css/main.711e39b4.css.map",
+    "main.8cbc4c7e.js.map": "/myCV/static/js/main.8cbc4c7e.js.map",
+    "787.ac35a09f.chunk.js.map": "/myCV/static/js/787.ac35a09f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.711e39b4.css",
+    "static/js/main.8cbc4c7e.js"
+  ]
+}
