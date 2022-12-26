@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import Message from "./Message";
 import CV from "./CV";
 import styled from "styled-components";
+import Contact from "./Contact";
 
 export default function Desktop() {
     const [isShowFolder, setIsShowFolder] = useState(false);
@@ -18,6 +19,11 @@ export default function Desktop() {
     const [isShowCV, setIsShowCV] = useState(false);
     const showCV = () => {
         setIsShowCV((prev) => !prev);
+    };
+
+    const [isShowContact, setIsShowContact] = useState(false);
+    const showContact = () => {
+        setIsShowContact((prev) => !prev);
     };
     function createFolder(src, name) {
         return (
@@ -70,7 +76,9 @@ export default function Desktop() {
             <div onDoubleClick={showCV}>
                 {createFolder(ResumeImage, "Резюме")}
             </div>
-            {createFolder(ExplorerImage, "Контакты")}
+            <div onDoubleClick={showContact}>
+                {createFolder(ExplorerImage, "Контакты")}
+            </div>
             {createFolder(RecycleImage, "Recycle Bin")}
 
             <OpenedWindow
@@ -81,6 +89,7 @@ export default function Desktop() {
             />
 
             <CV show={isShowCV} setShow={showCV} />
+            <Contact show={isShowContact} setShow={showContact} />
 
             {/* <Wrapper onMouseDown={add} onMouseUp={remove} /> */}
         </div>

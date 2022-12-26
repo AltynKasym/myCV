@@ -5,10 +5,20 @@ import styled from "styled-components";
 
 const List = styled.ul`
     display: flex;
+    gap: 5px;
 `;
 const CvInner = styled.div`
     height: 320px;
     overflow-y: scroll;
+    margin: -21px -15px;
+    padding: 20px;
+    user-select: text;
+    *:not(ul, li) {
+        padding-bottom: 10px;
+    }
+    li {
+        padding-bottom: 5px;
+    }
 `;
 
 export default function CV({ show, setShow }) {
@@ -34,7 +44,7 @@ export default function CV({ show, setShow }) {
                         <ul>
                             {cv.skills?.map((item) => (
                                 <List>
-                                    <li>{item.name}</li>
+                                    <em>{item.name}</em>
                                     <li>{item.list}</li>
                                 </List>
                             ))}
@@ -43,8 +53,8 @@ export default function CV({ show, setShow }) {
                         <ul>
                             {cv.experience?.map((item) => (
                                 <>
-                                    <li>{item.expPlace}</li>
-                                    <li>{item.expPeriod}</li>
+                                    <h3>- {item.expPlace}</h3>
+                                    <h3>{item.expPeriod}</h3>
                                     {item.expRespon?.map((item) => (
                                         <>
                                             <li>- {item}</li>

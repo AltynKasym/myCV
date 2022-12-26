@@ -45,4 +45,21 @@ export const CVdata = {
         "Иссык-Кульский Государственный Университет, высшее (2006 - 2011)",
     eduFaculty: "Факультет “математики и информационных технологий”",
     eduKaf: "кафедра “Прикладная математика и информатика”",
+    contacts: [
+        {
+            name: "Бишкек, Кыргызстан",
+            link: "https://www.google.com/maps/@42.8768751,74.5918609,12z",
+        },
+
+        { name: "+996 708 512 555", link: "tel:+996708512555" },
+        {
+            name: "altynbek.kasymov.sss@gmail.com",
+            link: "mailto:altynbek.kasymov.sss@gmail.com",
+        },
+        {
+            name: "linkedin.com/in/altynkasym",
+            link: "https://www.linkedin.com/in/altynkasym/",
+        },
+        { name: "@altynkasym", link: "https://t.me/altynkasym" },
+    ],
 };
