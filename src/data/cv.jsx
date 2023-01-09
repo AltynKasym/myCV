@@ -51,7 +51,7 @@ export const CVdata = {
             link: "https://www.google.com/maps/@42.8768751,74.5918609,12z",
         },
 
-        { name: "+996 708 512 555", link: "tel:+996708512555" },
+        { name: "+996 556 512 555", link: "tel:+996556512555" },
         {
             name: "altynbek.kasymov.sss@gmail.com",
             link: "mailto:altynbek.kasymov.sss@gmail.com",

@@ -35,6 +35,7 @@ export default function OpenedWindow({ show, setShow }) {
                         ? "myComp-window window myComp-window-vis"
                         : "myComp-window window"
                 }
+                // style={{ width: "100%" }}
             >
                 <WindowFrame name="Мой компьютер" setShow={setShow}>
                     <div className="window__main">
