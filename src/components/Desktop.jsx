@@ -9,20 +9,31 @@ import Message from "./Message";
 import CV from "./CV";
 import styled from "styled-components";
 import Contact from "./Contact";
+import { useDispatch } from "react-redux";
+import { closeFolder, openFolder } from "../store/FolderSlice";
 
 export default function Desktop() {
+    const dispatch = useDispatch();
     const [isShowFolder, setIsShowFolder] = useState(false);
     const showFolder = () => {
+        console.log("isShowFolder", isShowFolder);
+        isShowFolder
+            ? dispatch(closeFolder("MyComputer"))
+            : dispatch(openFolder("MyComputer"));
         setIsShowFolder((prev) => !prev);
     };
 
     const [isShowCV, setIsShowCV] = useState(false);
     const showCV = () => {
+        isShowCV ? dispatch(closeFolder("cv")) : dispatch(openFolder("cv"));
         setIsShowCV((prev) => !prev);
     };
 
     const [isShowContact, setIsShowContact] = useState(false);
     const showContact = () => {
+        isShowContact
+            ? dispatch(closeFolder("contacts"))
+            : dispatch(openFolder("contacts"));
         setIsShowContact((prev) => !prev);
     };
     function createFolder(src, name) {

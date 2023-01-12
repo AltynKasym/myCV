@@ -7,6 +7,7 @@ import Printer from "../assets/media/images/Printers.ico";
 import Message from "./Message";
 import { useState } from "react";
 import WindowFrame from "./WindowFrame";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function OpenedWindow({ show, setShow }) {
     function createFolder(src, name) {
@@ -27,6 +28,8 @@ export default function OpenedWindow({ show, setShow }) {
     function setWindowStatus(status) {
         setIsShowWindow(status);
     }
+
+    const dispatch = useDispatch();
     return (
         <>
             <div
