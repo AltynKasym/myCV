@@ -16,25 +16,30 @@ const folderSlice = createSlice({
             status: 0,
         },
     ],
+
     reducers: {
         openFolder(state, action) {
+            const initialValue = state.reduce(
+                (acc, value) => acc + value.status,
+                0
+            );
             switch (action.payload) {
                 case "MyComputer":
                     state[0].status = state.reduce(
                         (acc, value) => acc + value.status,
-                        1
+                        initialValue > 2 ? 0 : 1
                     );
                     break;
                 case "cv":
                     state[1].status = state.reduce(
                         (acc, value) => acc + value.status,
-                        1
+                        initialValue > 2 ? 0 : 1
                     );
                     break;
                 case "contacts":
                     state[2].status = state.reduce(
                         (acc, value) => acc + value.status,
-                        1
+                        initialValue > 2 ? 0 : 1
                     );
                     break;
             }

@@ -9,7 +9,7 @@ import Message from "./Message";
 import CV from "./CV";
 import styled from "styled-components";
 import Contact from "./Contact";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeFolder, openFolder } from "../store/FolderSlice";
 
 export default function Desktop() {
@@ -36,6 +36,8 @@ export default function Desktop() {
             : dispatch(openFolder("contacts"));
         setIsShowContact((prev) => !prev);
     };
+
+    const folder = useSelector((folder) => folder);
     function createFolder(src, name) {
         return (
             <div className="label">
@@ -91,17 +93,36 @@ export default function Desktop() {
                 {createFolder(ExplorerImage, "Контакты")}
             </div>
             {createFolder(RecycleImage, "Recycle Bin")}
-
-            <OpenedWindow
-                show={isShowFolder}
-                setShow={showFolder}
-                onMouseDown={add}
-                onMouseUp={remove}
-            />
-
-            <CV show={isShowCV} setShow={showCV} />
-            <Contact show={isShowContact} setShow={showContact} />
-
+            <div
+                style={{
+                    zIndex: `${folder[0].status + 10}`,
+                    position: "absolute",
+                    top: `${folder[0].status * 30}px`,
+                    left: `${folder[0].status * 100}px`,
+                }}
+            >
+                <OpenedWindow show={isShowFolder} setShow={showFolder} />
+            </div>
+            <div
+                style={{
+                    zIndex: `${folder[1].status + 10}`,
+                    position: "absolute",
+                    top: `${folder[1].status * 30}px`,
+                    left: `${folder[1].status * 100}px`,
+                }}
+            >
+                <CV show={isShowCV} setShow={showCV} />
+            </div>
+            <div
+                style={{
+                    zIndex: `${folder[2].status + 10}`,
+                    position: "absolute",
+                    top: `${folder[2].status * 30}px`,
+                    left: `${folder[2].status * 100}px`,
+                }}
+            >
+                <Contact show={isShowContact} setShow={showContact} />
+            </div>
             {/* <Wrapper onMouseDown={add} onMouseUp={remove} /> */}
         </div>
     );
