@@ -29,6 +29,13 @@ export default function CV({ show, setShow }) {
                     ? "myComp-window window myComp-window-vis"
                     : "myComp-window window"
             }
+            // style={{
+            //     width: "100vw",
+            //     height: "100vh",
+            //     position: "absolute",
+            //     top: "0px",
+            //     left: "0px",
+            // }}
         >
             <WindowFrame
                 name="Резюме - Блокнот"
@@ -42,8 +49,8 @@ export default function CV({ show, setShow }) {
                         <p>{cv.summary}</p>
                         <h3>{cv.skillsName}</h3>
                         <ul>
-                            {cv.skills?.map((item) => (
-                                <List>
+                            {cv.skills?.map((item, id) => (
+                                <List key={id + item}>
                                     <em>{item.name}</em>
                                     <li>{item.list}</li>
                                 </List>
@@ -51,16 +58,16 @@ export default function CV({ show, setShow }) {
                         </ul>
                         <h3>{cv.expText}</h3>
                         <ul>
-                            {cv.experience?.map((item) => (
-                                <>
+                            {cv.experience?.map((item, id) => (
+                                <div key={id + item}>
                                     <h3>- {item.expPlace}</h3>
                                     <h3>{item.expPeriod}</h3>
-                                    {item.expRespon?.map((item) => (
-                                        <>
+                                    {item.expRespon?.map((item, id) => (
+                                        <div key={id + item}>
                                             <li>- {item}</li>
-                                        </>
+                                        </div>
                                     ))}
-                                </>
+                                </div>
                             ))}
                         </ul>
                     </CvInner>

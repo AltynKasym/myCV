@@ -6,14 +6,17 @@ const folderSlice = createSlice({
         {
             name: "myComputer",
             status: 0,
+            minimize: false,
         },
         {
             name: "cv",
             status: 0,
+            minimize: false,
         },
         {
             name: "contacts",
             status: 0,
+            minimize: false,
         },
     ],
 

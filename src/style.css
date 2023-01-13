@@ -87,7 +87,6 @@ li {
     -ms-flex-direction: row;
     flex-direction: row;
     padding: 2px 0;
-    /* margin: 50px; */
 }
 .window__header-function-text {
     margin-left: 5px;
@@ -101,8 +100,6 @@ li {
     gap: 5px;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    /* height: 70%;
-    width: 98.5%; */
     padding: 20px 10px;
     background-color: #fff;
     margin: 3px;
@@ -336,6 +333,7 @@ figcaption {
     bottom: 0;
     width: 100%;
     border-top: 1px solid #cbcbcb;
+    z-index: 1000;
 }
 .footer__start {
     margin: auto 0;
@@ -417,7 +415,7 @@ figcaption {
     outline: 1px outset #e2e2e2;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
     .myComp-window-vis {
         display: block;
         position: absolute;
@@ -426,4 +424,4 @@ figcaption {
         width: 335px;
         height: 250px;
     }
-}
+} */

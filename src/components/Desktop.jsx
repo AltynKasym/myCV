@@ -14,30 +14,28 @@ import { closeFolder, openFolder } from "../store/FolderSlice";
 
 export default function Desktop() {
     const dispatch = useDispatch();
-    const [isShowFolder, setIsShowFolder] = useState(false);
+    const folder = useSelector((folder) => folder);
+    const [myCompStatus, cvStatus, contactStatus] = [
+        folder[0].status,
+        folder[1].status,
+        folder[2].status,
+    ];
     const showFolder = () => {
-        console.log("isShowFolder", isShowFolder);
-        isShowFolder
+        myCompStatus
             ? dispatch(closeFolder("MyComputer"))
             : dispatch(openFolder("MyComputer"));
-        setIsShowFolder((prev) => !prev);
     };
 
-    const [isShowCV, setIsShowCV] = useState(false);
     const showCV = () => {
-        isShowCV ? dispatch(closeFolder("cv")) : dispatch(openFolder("cv"));
-        setIsShowCV((prev) => !prev);
+        cvStatus ? dispatch(closeFolder("cv")) : dispatch(openFolder("cv"));
     };
 
-    const [isShowContact, setIsShowContact] = useState(false);
     const showContact = () => {
-        isShowContact
+        contactStatus
             ? dispatch(closeFolder("contacts"))
             : dispatch(openFolder("contacts"));
-        setIsShowContact((prev) => !prev);
     };
 
-    const folder = useSelector((folder) => folder);
     function createFolder(src, name) {
         return (
             <div className="label">
@@ -48,37 +46,6 @@ export default function Desktop() {
             </div>
         );
     }
-
-    let offsetX, offsetY;
-    const move = (e) => {
-        const el = e.target;
-        el.style.position = "absolute";
-        el.style.left = `${e.pageX - offsetX}px`;
-        el.style.top = `${e.pageY - offsetY}px`;
-    };
-    const add = (e) => {
-        const el = e.target;
-        offsetX = e.clientX - el.getBoundingClientRect().left;
-        offsetY = e.clientY - el.getBoundingClientRect().top;
-        el.addEventListener("mousemove", move);
-        console.log("add", el);
-    };
-    const remove = (e) => {
-        const el = e.target;
-        el.removeEventListener("mousemove", move);
-        console.log("remove", el);
-    };
-    const Wrapper = styled.div`
-        width: 50px;
-        height: 50px;
-        border-radius: 29px;
-        box-shadow: 0 0 6px;
-        position: absolute;
-        top: 40px;
-        left: 227px;
-        background-color: rgb(0, 0, 0, 0.5);
-        cursor: pointer;
-    `;
 
     return (
         <div className="labels">
@@ -95,33 +62,33 @@ export default function Desktop() {
             {createFolder(RecycleImage, "Recycle Bin")}
             <div
                 style={{
-                    zIndex: `${folder[0].status + 10}`,
                     position: "absolute",
-                    top: `${folder[0].status * 30}px`,
-                    left: `${folder[0].status * 100}px`,
+                    top: `${myCompStatus * 30}px`,
+                    left: `${myCompStatus * 100}px`,
+                    zIndex: `${myCompStatus + 10}`,
                 }}
             >
-                <OpenedWindow show={isShowFolder} setShow={showFolder} />
+                <OpenedWindow show={myCompStatus} setShow={showFolder} />
             </div>
             <div
                 style={{
-                    zIndex: `${folder[1].status + 10}`,
                     position: "absolute",
-                    top: `${folder[1].status * 30}px`,
-                    left: `${folder[1].status * 100}px`,
+                    top: `${cvStatus * 30}px`,
+                    left: `${cvStatus * 100}px`,
+                    zIndex: `${cvStatus + 10}`,
                 }}
             >
-                <CV show={isShowCV} setShow={showCV} />
+                <CV show={cvStatus} setShow={showCV} />
             </div>
             <div
                 style={{
-                    zIndex: `${folder[2].status + 10}`,
                     position: "absolute",
-                    top: `${folder[2].status * 30}px`,
-                    left: `${folder[2].status * 100}px`,
+                    top: `${contactStatus * 30}px`,
+                    left: `${contactStatus * 100}px`,
+                    zIndex: `${contactStatus + 10}`,
                 }}
             >
-                <Contact show={isShowContact} setShow={showContact} />
+                <Contact show={contactStatus} setShow={showContact} />
             </div>
             {/* <Wrapper onMouseDown={add} onMouseUp={remove} /> */}
         </div>

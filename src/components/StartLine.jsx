@@ -21,12 +21,7 @@ export default function StartLine() {
     const folder = useSelector((folder) => folder);
     console.log(folder);
     const sortedFolder = [...folder];
-    // console.log(
-    //     "keys",
-    //     folder.sort((a, b) => folder[b] - folder[a])
-    // );
 
-    console.log(sortedFolder.sort((a, b) => b.status - a.status));
     return (
         <div className="footer-line">
             <StartWindow show={isShowFolder} />
@@ -45,6 +40,7 @@ export default function StartLine() {
                                         return (
                                             <OpenedFolder
                                                 foldersName={"Мой компьютер"}
+                                                key={id + item}
                                             />
                                         );
 
@@ -52,12 +48,14 @@ export default function StartLine() {
                                         return (
                                             <OpenedFolder
                                                 foldersName={"Резюме"}
+                                                key={id + item}
                                             />
                                         );
                                     case "contacts":
                                         return (
                                             <OpenedFolder
                                                 foldersName={"Контакты"}
+                                                key={id + item}
                                             />
                                         );
                                 }

@@ -50,6 +50,37 @@ const CvInner = styled.div`
 `;
 
 export default function Contact({ show, setShow }) {
+    let offsetX, offsetY;
+    const move = (e) => {
+        const el = e.target;
+        el.style.position = "absolute";
+        el.style.left = `${e.pageX - offsetX}px`;
+        el.style.top = `${e.pageY - offsetY}px`;
+    };
+    const add = (e) => {
+        const el = e.target;
+        offsetX = e.clientX - el.getBoundingClientRect().left;
+        offsetY = e.clientY - el.getBoundingClientRect().top;
+        el.addEventListener("mousemove", move);
+        console.log("add", el);
+    };
+    const remove = (e) => {
+        const el = e.target;
+        el.removeEventListener("mousemove", move);
+        console.log("remove", el);
+    };
+    const Wrapper = styled.div`
+        width: 50px;
+        height: 50px;
+        border-radius: 29px;
+        box-shadow: 0 0 6px;
+        position: absolute;
+        top: 40px;
+        left: 227px;
+        background-color: rgb(0, 0, 0, 0.5);
+        cursor: pointer;
+    `;
+
     return (
         <div
             className={
@@ -67,8 +98,8 @@ export default function Contact({ show, setShow }) {
                     <CvInner>
                         <h3>Контакты</h3>
 
-                        {cv.contacts?.map((item) => (
-                            <List>
+                        {cv.contacts?.map((item, id) => (
+                            <List key={id + item}>
                                 <li>
                                     <a target="_blank" href={item.link}>
                                         {item.name}
