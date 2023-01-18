@@ -9,7 +9,7 @@ import { useState } from "react";
 import WindowFrame from "./WindowFrame";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function OpenedWindow({ show, setShow }) {
+export default function MyComp({ show, setShow, collaps, myCompCollaps }) {
     function createFolder(src, name) {
         return (
             <li className="header-function-text">
@@ -33,14 +33,22 @@ export default function OpenedWindow({ show, setShow }) {
     return (
         <>
             <div
-                className={
-                    show
-                        ? "myComp-window window myComp-window-vis"
-                        : "myComp-window window"
+                style={
+                    myCompCollaps
+                        ? {
+                              opacity: "0.3",
+                          }
+                        : {
+                              opacity: "1",
+                          }
                 }
-                // style={{ width: "100%" }}
             >
-                <WindowFrame name="Мой компьютер" setShow={setShow}>
+                <WindowFrame
+                    name="Мой компьютер"
+                    setShow={setShow}
+                    show={show}
+                    collaps={collaps}
+                >
                     <div className="window__main">
                         <div onDoubleClick={() => setWindowStatus(true)}>
                             {createFolder(Diskette, "Диск 3.5(A)")}

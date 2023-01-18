@@ -49,7 +49,19 @@ const CvInner = styled.div`
     }
 `;
 
-export default function Contact({ show, setShow }) {
+const Wrapper = styled.div`
+    width: 50px;
+    height: 50px;
+    border-radius: 29px;
+    box-shadow: 0 0 6px;
+    position: absolute;
+    top: 40px;
+    left: 227px;
+    background-color: rgb(0, 0, 0, 0.5);
+    cursor: pointer;
+`;
+
+export default function Contact({ show, setShow, collaps, contactCollaps }) {
     let offsetX, offsetY;
     const move = (e) => {
         const el = e.target;
@@ -69,30 +81,25 @@ export default function Contact({ show, setShow }) {
         el.removeEventListener("mousemove", move);
         console.log("remove", el);
     };
-    const Wrapper = styled.div`
-        width: 50px;
-        height: 50px;
-        border-radius: 29px;
-        box-shadow: 0 0 6px;
-        position: absolute;
-        top: 40px;
-        left: 227px;
-        background-color: rgb(0, 0, 0, 0.5);
-        cursor: pointer;
-    `;
 
     return (
         <div
-            className={
-                show
-                    ? "myComp-window window myComp-window-vis"
-                    : "myComp-window window"
+            style={
+                contactCollaps
+                    ? {
+                          opacity: "0.3",
+                      }
+                    : {
+                          opacity: "1",
+                      }
             }
         >
             <WindowFrame
                 name="Контакты - Блокнот"
                 setShow={setShow}
                 img={"MyComputer"}
+                show={show}
+                collaps={collaps}
             >
                 <div className="window__main">
                     <CvInner>

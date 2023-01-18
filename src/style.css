@@ -12,10 +12,12 @@
 
 .press-btn-start {
     border: 2px outset #9c9c9c;
+    height: 100%;
 }
 
 .press-btn-push {
     border: 2px inset #9c9c9c;
+    height: 100%;
 }
 
 .area {
@@ -107,6 +109,8 @@ li {
     border-right: 2px solid #e2e2e2;
     border-top: 2px solid #474747;
     border-left: 2px solid #474747;
+    height: 100%;
+    /* max-height: 600px; */
 }
 .window__main li {
     list-style: none;
@@ -119,6 +123,7 @@ li {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0 3px;
+    height: 20px;
 }
 .window__buttons {
     display: -webkit-box;
@@ -304,11 +309,12 @@ a {
 
 .labels {
     padding: 15px;
-    display: grid;
-    grid-template-columns: 100px 100px 100px 100px;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: 100px 100px 100px 100px;
     grid-template-rows: 80px 80px 80px 80px 80px;
-    grid-auto-flow: column;
-    grid-gap: 5px;
+    grid-auto-flow: column; */
+    grid-gap: 30px;
 }
 
 figcaption {
@@ -324,14 +330,17 @@ figcaption {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    align-items: center;
     border-top: 1px solid #fff;
     background-color: #cbcbcb;
     height: 27px;
 }
+
 .footer-line {
     position: absolute;
     bottom: 0;
     width: 100%;
+    min-width: 500px;
     border-top: 1px solid #cbcbcb;
     z-index: 1000;
 }
@@ -413,6 +422,12 @@ figcaption {
 
 .function__btn:hover {
     outline: 1px outset #e2e2e2;
+}
+
+.error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 /* @media screen and (max-width: 500px) {

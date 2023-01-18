@@ -6,17 +6,17 @@ const folderSlice = createSlice({
         {
             name: "myComputer",
             status: 0,
-            minimize: false,
+            collaps: false,
         },
         {
             name: "cv",
             status: 0,
-            minimize: false,
+            collaps: false,
         },
         {
             name: "contacts",
             status: 0,
-            minimize: false,
+            collaps: false,
         },
     ],
 
@@ -60,8 +60,36 @@ const folderSlice = createSlice({
                     break;
             }
         },
+        collapsFolder(state, action) {
+            switch (action.payload) {
+                case "MyComputer":
+                    state[0].collaps = true;
+                    break;
+                case "cv":
+                    state[1].collaps = true;
+                    break;
+                case "contacts":
+                    state[2].collaps = true;
+                    break;
+            }
+        },
+
+        uncollapsFolder(state, action) {
+            switch (action.payload) {
+                case "MyComputer":
+                    state[0].collaps = false;
+                    break;
+                case "cv":
+                    state[1].collaps = false;
+                    break;
+                case "contacts":
+                    state[2].collaps = false;
+                    break;
+            }
+        },
     },
 });
 
-export const { openFolder, closeFolder } = folderSlice.actions;
+export const { openFolder, closeFolder, collapsFolder, uncollapsFolder } =
+    folderSlice.actions;
 export default folderSlice.reducer;

@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import WindowFrame from "./WindowFrame";
 import { CVdata as cv } from "../data/cv";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const List = styled.ul`
     display: flex;
     gap: 5px;
 `;
 const CvInner = styled.div`
-    height: 320px;
+    height: ${({ collaps }) => (collaps && "320px") || "90vh"};
     overflow-y: scroll;
-    margin: -21px -15px;
+    margin: ${({ collaps }) => (collaps && "-21px -5px") || "-21px -15px"};
     padding: 20px;
     user-select: text;
     *:not(ul, li) {
@@ -21,26 +22,28 @@ const CvInner = styled.div`
     }
 `;
 
-export default function CV({ show, setShow }) {
+export default function CV({ show, setShow, collaps, cvCollaps }) {
+    const folder = useSelector((folder) => folder);
+
     return (
         <div
-            className={
-                show
-                    ? "myComp-window window myComp-window-vis"
-                    : "myComp-window window"
+            style={
+                cvCollaps
+                    ? {
+                          position: "absolute",
+                          bottom: "-50px",
+                          //   transform: "scale(0.5)",
+                          transition: "1s",
+                      }
+                    : { transition: "1s" }
             }
-            // style={{
-            //     width: "100vw",
-            //     height: "100vh",
-            //     position: "absolute",
-            //     top: "0px",
-            //     left: "0px",
-            // }}
         >
             <WindowFrame
                 name="Резюме - Блокнот"
                 setShow={setShow}
                 img={"MyComputer"}
+                collaps={collaps}
+                show={show}
             >
                 <div className="window__main">
                     <CvInner>
