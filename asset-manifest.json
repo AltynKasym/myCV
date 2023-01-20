@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/myCV/static/css/main.711e39b4.css",
-    "main.js": "/myCV/static/js/main.5eed0ef7.js",
+    "main.css": "/myCV/static/css/main.c9058ceb.css",
+    "main.js": "/myCV/static/js/main.bd111ae0.js",
     "static/js/787.ac35a09f.chunk.js": "/myCV/static/js/787.ac35a09f.chunk.js",
     "static/media/close.jpg": "/myCV/static/media/close.8c3bf337da69d43cc308.jpg",
     "static/media/M8pt.woff2": "/myCV/static/media/M8pt.04f730dd167c8385b694.woff2",
@@ -25,13 +25,14 @@
     "static/media/Volume.ico": "/myCV/static/media/Volume.5b20fb56ba4c9ec08a45.ico",
     "static/media/Windows.ico": "/myCV/static/media/Windows.f0127d3e45cd17f124f7.ico",
     "static/media/resume.ico": "/myCV/static/media/resume.ecf4a89d485ad874542e.ico",
+    "static/media/info.ico": "/myCV/static/media/info.6b8c72b3e8064e81ddc2.ico",
     "index.html": "/myCV/index.html",
-    "main.711e39b4.css.map": "/myCV/static/css/main.711e39b4.css.map",
-    "main.5eed0ef7.js.map": "/myCV/static/js/main.5eed0ef7.js.map",
+    "main.c9058ceb.css.map": "/myCV/static/css/main.c9058ceb.css.map",
+    "main.bd111ae0.js.map": "/myCV/static/js/main.bd111ae0.js.map",
     "787.ac35a09f.chunk.js.map": "/myCV/static/js/787.ac35a09f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.711e39b4.css",
-    "static/js/main.5eed0ef7.js"
+    "static/css/main.c9058ceb.css",
+    "static/js/main.bd111ae0.js"
   ]
 }
