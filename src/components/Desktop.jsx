@@ -2,6 +2,7 @@ import MyComputerImage from "../assets/media/images/MyComputer.ico";
 import FolderImage from "../assets/media/images/Folder.ico";
 import ResumeImage from "../assets/media/images/resume.ico";
 import RecycleImage from "../assets/media/images/Recycle.ico";
+import InfoImage from "../assets/media/images/info.ico";
 import ExplorerImage from "../assets/media/images/Explorer.ico";
 import OpenedWindow from "./MyComp";
 import { useEffect, useRef, useState } from "react";
@@ -25,32 +26,55 @@ import {
     showCV,
     showFolder,
 } from "../store/Actions";
+import Portfolio from "./Portfolio";
+import About from "./About";
+
+const Wrapper = styled.div`
+    z-index: ${(props) => (props.status ? "999" : `${props.window + 10}`)};
+`;
 
 function Desktop() {
     const dispatch = useDispatch();
     const folder = useSelector((folder) => folder);
 
-    const winQueue = [false, false, false];
+    const winQueue = [false, false, false, false, false];
     const [active, setActive] = useState(winQueue);
     function activeWindow(id) {
         winQueue.forEach((item, ind) => {
             id === ind ? (winQueue[ind] = true) : (winQueue[ind] = false);
         });
+
         setActive(winQueue);
     }
 
-    const [myCompStatus, cvStatus, contactStatus] = [
+    const [
+        myCompStatus,
+        cvStatus,
+        contactStatus,
+        portfolioStatus,
+        aboutStatus,
+    ] = [
         folder[0].status,
         folder[1].status,
         folder[2].status,
+        folder[3].status,
+        folder[4].status,
     ];
-    const [myCompCollaps, cvCollaps, contactCollaps] = [
+    const [
+        myCompCollaps,
+        cvCollaps,
+        contactCollaps,
+        portfolioCollaps,
+        aboutCollaps,
+    ] = [
         folder[0].collaps,
         folder[1].collaps,
         folder[2].collaps,
+        folder[3].collaps,
+        folder[4].collaps,
     ];
 
-    const showFolder = () => {
+    const showMyComp = () => {
         myCompStatus
             ? dispatch(closeFolder("MyComputer"))
             : dispatch(openFolder("MyComputer"));
@@ -64,6 +88,16 @@ function Desktop() {
         contactStatus
             ? dispatch(closeFolder("contacts"))
             : dispatch(openFolder("contacts"));
+    };
+    const showPortfolio = () => {
+        portfolioStatus
+            ? dispatch(closeFolder("portfolio"))
+            : dispatch(openFolder("portfolio"));
+    };
+    const showAbout = () => {
+        aboutStatus
+            ? dispatch(closeFolder("about"))
+            : dispatch(openFolder("about"));
     };
     const collapsContact = () => {
         contactCollaps
@@ -80,6 +114,16 @@ function Desktop() {
             ? dispatch(uncollapsFolder("MyComputer"))
             : dispatch(collapsFolder("MyComputer"));
     };
+    const collapsPortfolio = () => {
+        portfolioCollaps
+            ? dispatch(uncollapsFolder("portfolio"))
+            : dispatch(collapsFolder("portfolio"));
+    };
+    const collapsAbout = () => {
+        aboutCollaps
+            ? dispatch(uncollapsFolder("about"))
+            : dispatch(collapsFolder("about"));
+    };
 
     function createFolder(src, name) {
         return (
@@ -92,51 +136,80 @@ function Desktop() {
         );
     }
 
-    // const [isCollaps, setIsCollaps] = useState(false);
-    // const toCollaps = () => {
-    //     setIsCollaps((prev) => !prev);
-    // };
+    useEffect(() => {}, [
+        myCompStatus,
+        cvStatus,
+        contactStatus,
+        portfolioStatus,
+        aboutStatus,
+    ]);
 
     useEffect(() => {
-        if (myCompStatus === "false") winQueue[0] = false;
-        if (!cvStatus) winQueue[1] = false;
-        if (!contactStatus) winQueue[2] = false;
-    }, [myCompStatus, cvStatus, contactStatus]);
+        if (!myCompStatus) {
+            winQueue[0] = false;
+            dispatch(uncollapsFolder("myComputer"));
+        }
+        if (!cvStatus) {
+            winQueue[1] = false;
+            dispatch(uncollapsFolder("cv"));
+        }
+        if (!contactStatus) {
+            winQueue[2] = false;
+            dispatch(uncollapsFolder("contacts"));
+        }
+        if (!portfolioStatus) {
+            winQueue[3] = false;
+            dispatch(uncollapsFolder("portfolio"));
+        }
+        if (!aboutStatus) {
+            winQueue[4] = false;
+            dispatch(uncollapsFolder("about"));
+        }
+
+        setActive(winQueue);
+        console.log(active);
+        console.log(
+            myCompStatus,
+            cvStatus,
+            contactStatus,
+            portfolioStatus,
+            aboutStatus
+        );
+    }, [myCompStatus, cvStatus, contactStatus, portfolioStatus, aboutStatus]);
 
     return (
         <div className="labels">
-            <div onDoubleClick={showFolder}>
+            <div onDoubleClick={showMyComp}>
                 {createFolder(MyComputerImage, "Мой компьютер")}
             </div>
-            {createFolder(FolderImage, "Портфолио")}
             <div onDoubleClick={showCV}>
                 {createFolder(ResumeImage, "Резюме")}
+            </div>
+            <div onDoubleClick={showPortfolio}>
+                {createFolder(FolderImage, "Портфолио")}
             </div>
             <div onDoubleClick={showContact}>
                 {createFolder(ExplorerImage, "Контакты")}
             </div>
-            {createFolder(RecycleImage, "Recycle Bin")}
-            <div
-                style={
-                    active[0]
-                        ? { zIndex: "999" }
-                        : { zIndex: `${myCompStatus + 10}` }
-                }
+            <div onDoubleClick={showAbout}>
+                {createFolder(InfoImage, "Обо мне")}
+            </div>
+            <Wrapper
+                status={active[0]}
+                window={myCompStatus}
                 onClick={() => activeWindow(0)}
             >
                 <MyComp
                     show={myCompStatus}
-                    setShow={showFolder}
+                    setShow={showMyComp}
                     collaps={collapsMyComp}
                     myCompCollaps={myCompCollaps}
+                    image={MyComputerImage}
                 />
-            </div>
-            <div
-                style={
-                    active[1]
-                        ? { zIndex: "999" }
-                        : { zIndex: `${cvStatus + 10}` }
-                }
+            </Wrapper>
+            <Wrapper
+                status={active[1]}
+                window={cvStatus}
                 onClick={() => activeWindow(1)}
             >
                 <CV
@@ -144,14 +217,12 @@ function Desktop() {
                     setShow={showCV}
                     collaps={collapsCV}
                     cvCollaps={cvCollaps}
+                    image={ResumeImage}
                 />
-            </div>
-            <div
-                style={
-                    active[2]
-                        ? { zIndex: "999" }
-                        : { zIndex: `${contactStatus + 10}` }
-                }
+            </Wrapper>
+            <Wrapper
+                status={active[2]}
+                window={contactStatus}
                 onClick={() => activeWindow(2)}
             >
                 <Contact
@@ -160,8 +231,37 @@ function Desktop() {
                     onClick={activeWindow}
                     collaps={collapsContact}
                     contactCollaps={contactCollaps}
+                    image={ExplorerImage}
                 />
-            </div>
+            </Wrapper>
+            <Wrapper
+                status={active[3]}
+                window={portfolioStatus}
+                onClick={() => activeWindow(3)}
+            >
+                <Portfolio
+                    show={portfolioStatus}
+                    setShow={showPortfolio}
+                    onClick={activeWindow}
+                    collaps={collapsPortfolio}
+                    contactCollaps={portfolioCollaps}
+                    image={ExplorerImage}
+                />
+            </Wrapper>
+            <Wrapper
+                status={active[4]}
+                window={aboutStatus}
+                onClick={() => activeWindow(4)}
+            >
+                <About
+                    show={aboutStatus}
+                    setShow={showAbout}
+                    onClick={activeWindow}
+                    collaps={collapsAbout}
+                    contactCollaps={aboutCollaps}
+                    image={ExplorerImage}
+                />
+            </Wrapper>
             {/* <Wrapper onMouseDown={add} onMouseUp={remove} /> */}
         </div>
     );

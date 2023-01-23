@@ -61,37 +61,17 @@ const Wrapper = styled.div`
     cursor: pointer;
 `;
 
-export default function Contact({
+export default function Portfolio({
     show,
     setShow,
     collaps,
     contactCollaps,
     image,
 }) {
-    let offsetX, offsetY;
-    const move = (e) => {
-        const el = e.target;
-        el.style.position = "absolute";
-        el.style.left = `${e.pageX - offsetX}px`;
-        el.style.top = `${e.pageY - offsetY}px`;
-    };
-    const add = (e) => {
-        const el = e.target;
-        offsetX = e.clientX - el.getBoundingClientRect().left;
-        offsetY = e.clientY - el.getBoundingClientRect().top;
-        el.addEventListener("mousemove", move);
-        console.log("add", el);
-    };
-    const remove = (e) => {
-        const el = e.target;
-        el.removeEventListener("mousemove", move);
-        console.log("remove", el);
-    };
-
     return (
         <div className={contactCollaps ? "window-collaps" : "window-uncollaps"}>
             <WindowFrame
-                name="Контакты"
+                name="Портфолио"
                 setShow={setShow}
                 img={"MyComputer"}
                 show={show}
@@ -100,7 +80,7 @@ export default function Contact({
             >
                 <div className="window__main">
                     <CvInner>
-                        <h3>Контакты</h3>
+                        <h3>Портфолио</h3>
 
                         {cv.contacts?.map((item, id) => (
                             <List key={id + item}>

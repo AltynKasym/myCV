@@ -9,9 +9,9 @@ const List = styled.ul`
     gap: 5px;
 `;
 const CvInner = styled.div`
-    height: ${({ collaps }) => (collaps && "320px") || "90vh"};
+    height: ${(props) => (props.collaps ? "90vh" : "320px")};
     overflow-y: scroll;
-    margin: ${({ collaps }) => (collaps && "-21px -5px") || "-21px -15px"};
+    margin: ${(props) => (props.collaps && "-21px -15px") || "-21px -15px"};
     padding: 20px;
     user-select: text;
     *:not(ul, li) {
@@ -22,31 +22,21 @@ const CvInner = styled.div`
     }
 `;
 
-export default function CV({ show, setShow, collaps, cvCollaps }) {
+export default function CV({ show, setShow, collaps, cvCollaps, image }) {
     const folder = useSelector((folder) => folder);
 
     return (
-        <div
-            style={
-                cvCollaps
-                    ? {
-                          position: "absolute",
-                          bottom: "-50px",
-                          //   transform: "scale(0.5)",
-                          transition: "1s",
-                      }
-                    : { transition: "1s" }
-            }
-        >
+        <div className={cvCollaps ? "window-collaps" : "window-uncollaps"}>
             <WindowFrame
                 name="Резюме - Блокнот"
                 setShow={setShow}
                 img={"MyComputer"}
                 collaps={collaps}
                 show={show}
+                image={image}
             >
                 <div className="window__main">
-                    <CvInner>
+                    <CvInner collaps={collaps}>
                         <h2>{cv.name}</h2>
                         <h3>{cv.direction}</h3>
                         <p>{cv.summary}</p>

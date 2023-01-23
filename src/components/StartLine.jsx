@@ -34,10 +34,18 @@ export default function StartLine() {
     const sortedFolder = [...folder];
 
     const dispatch = useDispatch();
-    const [myCompCollaps, cvCollaps, contactCollaps] = [
+    const [
+        myCompCollaps,
+        cvCollaps,
+        contactCollaps,
+        portfolioCollaps,
+        aboutCollaps,
+    ] = [
         folder[0].collaps,
         folder[1].collaps,
         folder[2].collaps,
+        folder[3].collaps,
+        folder[4].collaps,
     ];
     const collapsContact = () => {
         contactCollaps
@@ -53,6 +61,16 @@ export default function StartLine() {
         myCompCollaps
             ? dispatch(uncollapsFolder("MyComputer"))
             : dispatch(collapsFolder("MyComputer"));
+    };
+    const collapsPortfolio = () => {
+        portfolioCollaps
+            ? dispatch(uncollapsFolder("portfolio"))
+            : dispatch(collapsFolder("portfolio"));
+    };
+    const collapsAbout = () => {
+        aboutCollaps
+            ? dispatch(uncollapsFolder("about"))
+            : dispatch(collapsFolder("about"));
     };
 
     return (
@@ -107,6 +125,32 @@ export default function StartLine() {
                                                 <OpenedFolder
                                                     foldersName={"Контакты"}
                                                     collaps={contactCollaps}
+                                                    image={ExplorerImage}
+                                                />
+                                            </Folder>
+                                        );
+                                    case "portfolio":
+                                        return (
+                                            <Folder
+                                                key={id + item}
+                                                onClick={collapsPortfolio}
+                                            >
+                                                <OpenedFolder
+                                                    foldersName={"Портфолио"}
+                                                    collaps={portfolioCollaps}
+                                                    image={ExplorerImage}
+                                                />
+                                            </Folder>
+                                        );
+                                    case "about":
+                                        return (
+                                            <Folder
+                                                key={id + item}
+                                                onClick={collapsAbout}
+                                            >
+                                                <OpenedFolder
+                                                    foldersName={"Обо мне"}
+                                                    collaps={aboutCollaps}
                                                     image={ExplorerImage}
                                                 />
                                             </Folder>

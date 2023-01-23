@@ -9,7 +9,13 @@ import { useState } from "react";
 import WindowFrame from "./WindowFrame";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function MyComp({ show, setShow, collaps, myCompCollaps }) {
+export default function MyComp({
+    show,
+    setShow,
+    collaps,
+    myCompCollaps,
+    image,
+}) {
     function createFolder(src, name) {
         return (
             <li className="header-function-text">
@@ -33,14 +39,8 @@ export default function MyComp({ show, setShow, collaps, myCompCollaps }) {
     return (
         <>
             <div
-                style={
-                    myCompCollaps
-                        ? {
-                              opacity: "0.3",
-                          }
-                        : {
-                              opacity: "1",
-                          }
+                className={
+                    myCompCollaps ? "window-collaps" : "window-uncollaps"
                 }
             >
                 <WindowFrame
@@ -48,6 +48,7 @@ export default function MyComp({ show, setShow, collaps, myCompCollaps }) {
                     setShow={setShow}
                     show={show}
                     collaps={collaps}
+                    image={image}
                 >
                     <div className="window__main">
                         <div onDoubleClick={() => setWindowStatus(true)}>

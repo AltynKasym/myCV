@@ -1,29 +1,38 @@
 import Collaps from "../assets/media/images/collaps.jpg";
 import Maximize from "../assets/media/images/maximize.jpg";
 import Close from "../assets/media/images/close.jpg";
-import MyComputer from "../assets/media/images/MyComputer.ico";
+import MyComputerImage from "../assets/media/images/MyComputer.ico";
+import FolderImage from "../assets/media/images/Folder.ico";
+import ResumeImage from "../assets/media/images/resume.ico";
+import RecycleImage from "../assets/media/images/Recycle.ico";
+import InfoImage from "../assets/media/images/info.ico";
+import ExplorerImage from "../assets/media/images/Explorer.ico";
 import CV from "../assets/media/images/resume.ico";
 import styled from "styled-components";
 import { useState } from "react";
 
+const Wrapper = styled.div`
+    position: absolute;
+    top: ${(props) => (props.minimize ? "0px" : `${props.show * 30}px`)};
+    left: ${(props) => (props.minimize ? "0px" : `${props.show * 100}px`)};
+    /* left: 150px; */
+    width: ${(props) => (props.minimize ? "100vw" : "350px")};
+    height: ${(props) => props.minimize && "98vh"};
+`;
+
+const TitleWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`;
 const Title = styled.h2`
     margin: 2px;
     font-size: 12px;
     font-weight: 400;
     color: #fff;
-
-    &::before {
-        margin-bottom: -2px;
-        margin-right: 3px;
-        padding: 0;
-
-        background-position: center center;
-        background-size: 16px 13px;
-        display: inline-block;
-        width: 16px;
-        height: 13px;
-        content: "";
-    }
+`;
+const Image = styled.img`
+    padding: 0 5px;
+    height: 15px;
 `;
 
 export default function WindowFrame({
@@ -33,6 +42,7 @@ export default function WindowFrame({
     img,
     show,
     collaps,
+    image,
 }) {
     function createMenu(first, other) {
         return (
@@ -49,30 +59,16 @@ export default function WindowFrame({
     };
 
     return (
-        <div
+        <Wrapper
             className={show ? " window " : "myComp-window window"}
-            style={
-                isMinimize
-                    ? {
-                          position: "absolute",
-                          top: "0px",
-                          left: "0px",
-                          width: "100vw",
-                          height: "98vh",
-                      }
-                    : {
-                          width: "350px",
-                          position: "absolute",
-                          top: `${show * 30}px`,
-                          left: `${show * 100}px`,
-                      }
-            }
+            minimize={isMinimize}
+            show={show}
         >
             <div className="window__header">
-                {/* <img src={CV} /> */}
-                <div className="move">
+                <TitleWrapper>
+                    <Image src={`${image}`} />
                     <Title className="window__header-title">{name}</Title>
-                </div>
+                </TitleWrapper>
                 <div className="window__buttons">
                     <img
                         className="window__btn"
@@ -106,6 +102,6 @@ export default function WindowFrame({
                 <div className="area">5 объектов</div>
                 <div className="area"></div>
             </div> */}
-        </div>
+        </Wrapper>
     );
 }

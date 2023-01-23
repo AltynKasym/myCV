@@ -18,6 +18,16 @@ const folderSlice = createSlice({
             status: 0,
             collaps: false,
         },
+        {
+            name: "portfolio",
+            status: 0,
+            collaps: false,
+        },
+        {
+            name: "about",
+            status: 0,
+            collaps: false,
+        },
     ],
 
     reducers: {
@@ -45,6 +55,18 @@ const folderSlice = createSlice({
                         initialValue > 2 ? 0 : 1
                     );
                     break;
+                case "portfolio":
+                    state[3].status = state.reduce(
+                        (acc, value) => acc + value.status,
+                        initialValue > 2 ? 0 : 1
+                    );
+                    break;
+                case "about":
+                    state[4].status = state.reduce(
+                        (acc, value) => acc + value.status,
+                        initialValue > 2 ? 0 : 1
+                    );
+                    break;
             }
         },
         closeFolder(state, action) {
@@ -57,6 +79,12 @@ const folderSlice = createSlice({
                     break;
                 case "contacts":
                     state[2].status = 0;
+                    break;
+                case "portfolio":
+                    state[3].status = 0;
+                    break;
+                case "about":
+                    state[4].status = 0;
                     break;
             }
         },
@@ -71,6 +99,12 @@ const folderSlice = createSlice({
                 case "contacts":
                     state[2].collaps = true;
                     break;
+                case "portfolio":
+                    state[3].collaps = true;
+                    break;
+                case "about":
+                    state[4].collaps = true;
+                    break;
             }
         },
 
@@ -84,6 +118,12 @@ const folderSlice = createSlice({
                     break;
                 case "contacts":
                     state[2].collaps = false;
+                    break;
+                case "portfolio":
+                    state[3].collaps = false;
+                    break;
+                case "about":
+                    state[4].collaps = false;
                     break;
             }
         },
