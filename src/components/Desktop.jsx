@@ -22,8 +22,11 @@ import MyComp from "./MyComp";
 import Portfolio from "./Portfolio";
 import About from "./About";
 import { activeFolder } from "../store/FolderActiveSlice";
+import Draggable from "react-draggable";
 
 const Wrapper = styled.div`
+    position: absolute;
+    top: 50px;
     z-index: ${(props) => (props.status ? "999" : `${props.window + 10}`)};
 `;
 
@@ -125,33 +128,20 @@ function Desktop() {
 
     useEffect(() => {
         if (!myCompStatus) {
-            // winQueue[0] = false;
             dispatch(uncollapsFolder("myComputer"));
         }
         if (!cvStatus) {
-            // winQueue[1] = false;
             dispatch(uncollapsFolder("cv"));
         }
         if (!contactStatus) {
-            // winQueue[2] = false;
             dispatch(uncollapsFolder("contacts"));
         }
         if (!portfolioStatus) {
-            // winQueue[3] = false;
             dispatch(uncollapsFolder("portfolio"));
         }
         if (!aboutStatus) {
-            // winQueue[4] = false;
             dispatch(uncollapsFolder("about"));
         }
-
-        console.log(
-            myCompStatus,
-            cvStatus,
-            contactStatus,
-            portfolioStatus,
-            aboutStatus
-        );
     }, [myCompStatus, cvStatus, contactStatus, portfolioStatus, aboutStatus]);
 
     return (
@@ -171,73 +161,83 @@ function Desktop() {
             <div onDoubleClick={showAbout}>
                 {createFolder(InfoImage, "Обо мне")}
             </div>
-            <Wrapper
-                status={store.activeFolder[0]}
-                window={myCompStatus}
-                onClick={() => activeWindow(0)}
-            >
-                <MyComp
-                    show={myCompStatus}
-                    setShow={showMyComp}
-                    collaps={collapsMyComp}
-                    myCompCollaps={myCompCollaps}
-                    image={MyComputerImage}
-                />
-            </Wrapper>
-            <Wrapper
-                status={store.activeFolder[1]}
-                window={cvStatus}
-                onClick={() => activeWindow(1)}
-            >
-                <CV
-                    show={cvStatus}
-                    setShow={showCV}
-                    collaps={collapsCV}
-                    cvCollaps={cvCollaps}
-                    image={ResumeImage}
-                />
-            </Wrapper>
-            <Wrapper
-                status={store.activeFolder[2]}
-                window={contactStatus}
-                onClick={() => activeWindow(2)}
-            >
-                <Contact
-                    show={contactStatus}
-                    setShow={showContact}
-                    collaps={collapsContact}
-                    contactCollaps={contactCollaps}
-                    image={ExplorerImage}
-                />
-            </Wrapper>
-            <Wrapper
-                status={store.activeFolder[3]}
-                window={portfolioStatus}
-                onClick={() => activeWindow(3)}
-            >
-                <Portfolio
-                    show={portfolioStatus}
-                    setShow={showPortfolio}
-                    onClick={activeWindow}
-                    collaps={collapsPortfolio}
-                    contactCollaps={portfolioCollaps}
-                    image={ExplorerImage}
-                />
-            </Wrapper>
-            <Wrapper
-                status={store.activeFolder[4]}
-                window={aboutStatus}
-                onClick={() => activeWindow(4)}
-            >
-                <About
-                    show={aboutStatus}
-                    setShow={showAbout}
-                    onClick={activeWindow}
-                    collaps={collapsAbout}
-                    contactCollaps={aboutCollaps}
-                    image={ExplorerImage}
-                />
-            </Wrapper>
+            <Draggable defaultPosition={{ x: 0, y: 0 }}>
+                <Wrapper
+                    status={store.activeFolder[0]}
+                    window={myCompStatus}
+                    onClick={() => activeWindow(0)}
+                >
+                    <MyComp
+                        show={myCompStatus}
+                        setShow={showMyComp}
+                        collaps={collapsMyComp}
+                        myCompCollaps={myCompCollaps}
+                        image={MyComputerImage}
+                    />
+                </Wrapper>
+            </Draggable>
+            <Draggable>
+                <Wrapper
+                    status={store.activeFolder[1]}
+                    window={cvStatus}
+                    onClick={() => activeWindow(1)}
+                >
+                    <CV
+                        show={cvStatus}
+                        setShow={showCV}
+                        collaps={collapsCV}
+                        cvCollaps={cvCollaps}
+                        image={ResumeImage}
+                    />
+                </Wrapper>
+            </Draggable>
+            <Draggable>
+                <Wrapper
+                    status={store.activeFolder[2]}
+                    window={contactStatus}
+                    onClick={() => activeWindow(2)}
+                >
+                    <Contact
+                        show={contactStatus}
+                        setShow={showContact}
+                        collaps={collapsContact}
+                        contactCollaps={contactCollaps}
+                        image={ExplorerImage}
+                    />
+                </Wrapper>
+            </Draggable>
+            <Draggable>
+                <Wrapper
+                    status={store.activeFolder[3]}
+                    window={portfolioStatus}
+                    onClick={() => activeWindow(3)}
+                >
+                    <Portfolio
+                        show={portfolioStatus}
+                        setShow={showPortfolio}
+                        onClick={activeWindow}
+                        collaps={collapsPortfolio}
+                        contactCollaps={portfolioCollaps}
+                        image={ExplorerImage}
+                    />
+                </Wrapper>
+            </Draggable>
+            <Draggable>
+                <Wrapper
+                    status={store.activeFolder[4]}
+                    window={aboutStatus}
+                    onClick={() => activeWindow(4)}
+                >
+                    <About
+                        show={aboutStatus}
+                        setShow={showAbout}
+                        onClick={activeWindow}
+                        collaps={collapsAbout}
+                        contactCollaps={aboutCollaps}
+                        image={ExplorerImage}
+                    />
+                </Wrapper>
+            </Draggable>
         </div>
     );
 }

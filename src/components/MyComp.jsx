@@ -8,6 +8,7 @@ import Message from "./Message";
 import { useState } from "react";
 import WindowFrame from "./WindowFrame";
 import { useDispatch, useSelector } from "react-redux";
+import Draggable from "react-draggable";
 
 export default function MyComp({
     show,
