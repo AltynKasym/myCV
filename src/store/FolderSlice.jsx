@@ -32,46 +32,37 @@ const folderSlice = createSlice({
 
     reducers: {
         openFolder(state, action) {
-            const initialValue = state.reduce(
-                (acc, value) => acc + value.status,
-                0
-            );
+            const searchMinEl = (arr) => {
+                let sortedArr = [];
+                arr.map((item) => {
+                    sortedArr.push(item.status);
+                });
+                return Math.max(...sortedArr) < 5
+                    ? Math.max(...sortedArr) + 1
+                    : 1;
+            };
+
             switch (action.payload) {
-                case "MyComputer":
-                    state[0].status = state.reduce(
-                        (acc, value) => acc + value.status,
-                        initialValue > 2 ? 0 : 1
-                    );
+                case "myComputer":
+                    state[0].status = searchMinEl(state);
                     break;
                 case "cv":
-                    state[1].status = state.reduce(
-                        (acc, value) => acc + value.status,
-                        initialValue > 2 ? 0 : 1
-                    );
+                    state[1].status = searchMinEl(state);
                     break;
                 case "contacts":
-                    state[2].status = state.reduce(
-                        (acc, value) => acc + value.status,
-                        initialValue > 2 ? 0 : 1
-                    );
+                    state[2].status = searchMinEl(state);
                     break;
                 case "portfolio":
-                    state[3].status = state.reduce(
-                        (acc, value) => acc + value.status,
-                        initialValue > 2 ? 0 : 1
-                    );
+                    state[3].status = searchMinEl(state);
                     break;
                 case "about":
-                    state[4].status = state.reduce(
-                        (acc, value) => acc + value.status,
-                        initialValue > 2 ? 0 : 1
-                    );
+                    state[4].status = searchMinEl(state);
                     break;
             }
         },
         closeFolder(state, action) {
             switch (action.payload) {
-                case "MyComputer":
+                case "myComputer":
                     state[0].status = 0;
                     break;
                 case "cv":
@@ -90,7 +81,7 @@ const folderSlice = createSlice({
         },
         collapsFolder(state, action) {
             switch (action.payload) {
-                case "MyComputer":
+                case "myComputer":
                     state[0].collaps = true;
                     break;
                 case "cv":
@@ -110,7 +101,7 @@ const folderSlice = createSlice({
 
         uncollapsFolder(state, action) {
             switch (action.payload) {
-                case "MyComputer":
+                case "myComputer":
                     state[0].collaps = false;
                     break;
                 case "cv":

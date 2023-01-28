@@ -334,13 +334,14 @@ figcaption {
     border-top: 1px solid #fff;
     background-color: #cbcbcb;
     height: 27px;
+    width: 100%;
 }
 
 .footer-line {
     position: absolute;
     bottom: 0;
     width: 100%;
-    min-width: 500px;
+    /* min-width: 500px; */
     border-top: 1px solid #cbcbcb;
     z-index: 1000;
 }

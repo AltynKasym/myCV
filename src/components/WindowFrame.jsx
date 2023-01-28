@@ -10,6 +10,7 @@ import ExplorerImage from "../assets/media/images/Explorer.ico";
 import CV from "../assets/media/images/resume.ico";
 import styled from "styled-components";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Wrapper = styled.div`
     position: absolute;
@@ -58,6 +59,9 @@ export default function WindowFrame({
         setIsMinimize((prev) => !prev);
     };
 
+    useEffect(() => {
+        !show && setIsMinimize(false);
+    }, [show]);
     return (
         <Wrapper
             className={show ? " window " : "myComp-window window"}

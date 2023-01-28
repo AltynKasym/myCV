@@ -14,6 +14,7 @@ import FolderImage from "../assets/media/images/Folder.ico";
 import CVImage from "../assets/media/images/resume.ico";
 import RecycleImage from "../assets/media/images/Recycle.ico";
 import ExplorerImage from "../assets/media/images/Explorer.ico";
+import { activeFolder } from "../store/FolderActiveSlice";
 
 const FooterDiv = styled.div`
     display: flex;
@@ -29,9 +30,9 @@ export default function StartLine() {
     const showFolder = () => {
         setIsShowFolder((prev) => !prev);
     };
-    const folder = useSelector((folder) => folder);
+    const store = useSelector((folder) => folder);
 
-    const sortedFolder = [...folder];
+    const sortedFolder = [...store.folder];
 
     const dispatch = useDispatch();
     const [
@@ -41,38 +42,36 @@ export default function StartLine() {
         portfolioCollaps,
         aboutCollaps,
     ] = [
-        folder[0].collaps,
-        folder[1].collaps,
-        folder[2].collaps,
-        folder[3].collaps,
-        folder[4].collaps,
+        store.folder[0].collaps,
+        store.folder[1].collaps,
+        store.folder[2].collaps,
+        store.folder[3].collaps,
+        store.folder[4].collaps,
     ];
     const collapsContact = () => {
-        contactCollaps
-            ? dispatch(uncollapsFolder("contacts"))
-            : dispatch(collapsFolder("contacts"));
+        activeWindow(2);
+        dispatch(uncollapsFolder("contacts"));
     };
     const collapsCV = () => {
-        cvCollaps
-            ? dispatch(uncollapsFolder("cv"))
-            : dispatch(collapsFolder("cv"));
+        activeWindow(1);
+        dispatch(uncollapsFolder("cv"));
     };
     const collapsMyComp = () => {
-        myCompCollaps
-            ? dispatch(uncollapsFolder("MyComputer"))
-            : dispatch(collapsFolder("MyComputer"));
+        activeWindow(0);
+        dispatch(uncollapsFolder("myComputer"));
     };
     const collapsPortfolio = () => {
-        portfolioCollaps
-            ? dispatch(uncollapsFolder("portfolio"))
-            : dispatch(collapsFolder("portfolio"));
+        activeWindow(3);
+        dispatch(uncollapsFolder("portfolio"));
     };
     const collapsAbout = () => {
-        aboutCollaps
-            ? dispatch(uncollapsFolder("about"))
-            : dispatch(collapsFolder("about"));
+        activeWindow(4);
+        dispatch(uncollapsFolder("about"));
     };
 
+    function activeWindow(ind) {
+        dispatch(activeFolder(ind));
+    }
     return (
         <div className="footer-line">
             <StartWindow show={isShowFolder} />
