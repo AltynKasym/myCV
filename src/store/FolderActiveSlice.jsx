@@ -12,8 +12,13 @@ const folderActiveSlice = createSlice({
                     : (state[ind] = false);
             });
         },
+        resetFolder(state) {
+            state.map((item, ind) => {
+                state[ind] = false;
+            });
+        },
     },
 });
 
-export const { activeFolder } = folderActiveSlice.actions;
+export const { activeFolder, resetFolder } = folderActiveSlice.actions;
 export default folderActiveSlice.reducer;

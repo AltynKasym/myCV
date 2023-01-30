@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import WindowFrame from "./WindowFrame";
-import { CVdata as cv } from "../data/cv";
+import { data as cv } from "../data/data";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
@@ -9,7 +9,7 @@ const List = styled.ul`
     gap: 5px;
 `;
 const CvInner = styled.div`
-    height: ${(props) => (props.collaps ? "90vh" : "320px")};
+    height: ${(props) => (props.collaps ? "98vh" : "320px")};
     overflow-y: scroll;
     margin: ${(props) => (props.collaps && "-21px -15px") || "-21px -15px"};
     padding: 20px;

@@ -1,4 +1,4 @@
-export const CVdata = {
+export const data = {
     name: "Алтынбек Касымов",
     direction: "Frontend Разработчик",
     summary:
@@ -61,5 +61,39 @@ export const CVdata = {
             link: "https://www.linkedin.com/in/altynkasym/",
         },
         { name: "@altynkasym", link: "https://t.me/altynkasym" },
+    ],
+    projects: [
+        {
+            name: "Бизнес Практика ",
+            description: "Сайт для малого бизнеса состоящее из 4 страниц.",
+            technologies:
+                "Pug, Sass, Bootstrap, Pixel Perfect, JavaScript, Webpack",
+            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            url: "https://altynkasym.github.io/business-practice/dist/",
+        },
+        {
+            name: "Игра Math Quiz ",
+            description:
+                "Математическая quiz-игра с двумя режимами: на время и без ограничения времени. Результат игрока записывается в турнирную таблицу и сортируется по возрастанию.",
+            technologies: "HTML, Sass, JavaScript, Webpack",
+            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            url: "https://altynkasym.github.io/Math_Quiz/dist/index.html",
+        },
+        {
+            name: "Приложение ToDo List",
+            description:
+                "Программа для создания ежедневных списков с возможностью удалять, переименовывать, отмечать как выполненные.",
+            technologies: "Sass, React, MUI",
+            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            url: "https://altynkasym.github.io/Todo-app/    ",
+        },
+        {
+            name: "Игра Memory Game",
+            description:
+                "Игра на поиск похожих карточек. Результат игрока записывается в турнирную таблицу и сортируется по возрастанию.",
+            technologies: "React, lodash",
+            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            url: "https://altynkasym.github.io/Memory_game/",
+        },
     ],
 };

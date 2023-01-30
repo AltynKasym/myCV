@@ -1,6 +1,6 @@
 import React from "react";
 import WindowFrame from "./WindowFrame";
-import { CVdata as cv } from "../data/cv";
+import { data as cv } from "../data/data";
 import styled from "styled-components";
 
 const List = styled.ul`

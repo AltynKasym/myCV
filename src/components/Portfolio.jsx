@@ -1,11 +1,19 @@
 import React from "react";
 import WindowFrame from "./WindowFrame";
-import { CVdata as cv } from "../data/cv";
+import { data } from "../data/data";
 import styled from "styled-components";
 
 const List = styled.ul`
     display: flex;
     gap: 5px;
+
+    li {
+        display: flex;
+    }
+`;
+
+const Title = styled.h1`
+    font-size: 0.9rem;
 `;
 const CvInner = styled.div`
     /* height: 320px; */
@@ -17,12 +25,12 @@ const CvInner = styled.div`
     }
     li {
         padding-bottom: 15px;
-        padding-left: 8px;
+        /* padding-left: 8px; */
     }
     a {
         color: black;
     }
-    ul {
+    /* ul {
         &::before {
             background-size: 15px 15px;
             display: inline-block;
@@ -30,23 +38,7 @@ const CvInner = styled.div`
             height: 15px;
             content: "";
         }
-
-        &:nth-child(2)::before {
-            background-image: url("https://cdn-icons-png.flaticon.com/512/2948/2948111.png");
-        }
-        &:nth-child(3)::before {
-            background-image: url("https://cdn-icons-png.flaticon.com/512/2947/2947981.png");
-        }
-        &:nth-child(4)::before {
-            background-image: url("https://cdn-icons-png.flaticon.com/512/54/54469.png");
-        }
-        &:nth-child(5)::before {
-            background-image: url("https://cdn-icons-png.flaticon.com/512/3800/3800073.png");
-        }
-        &:nth-child(6)::before {
-            background-image: url("https://cdn-icons-png.flaticon.com/512/2564/2564766.png");
-        }
-    }
+    } */
 `;
 
 const Wrapper = styled.div`
@@ -59,6 +51,32 @@ const Wrapper = styled.div`
     left: 227px;
     background-color: rgb(0, 0, 0, 0.5);
     cursor: pointer;
+`;
+
+const Textblock = styled.div`
+    padding: 0px 10px;
+
+    * {
+        margin-bottom: 5px;
+    }
+`;
+const Image = styled.img`
+    width: 100px;
+    height: 70px;
+`;
+const Button = styled.button`
+    padding: 5px 20px;
+    border: 2px outset #9c9c9c;
+    transition: 0.1s;
+
+    &:hover {
+        transition: 0.1s;
+        transform: scale(1.1);
+    }
+
+    &:active {
+        border: 2px inset #9c9c9c;
+    }
 `;
 
 export default function Portfolio({
@@ -82,12 +100,24 @@ export default function Portfolio({
                     <CvInner>
                         <h3>Портфолио</h3>
 
-                        {cv.contacts?.map((item, id) => (
+                        {data.projects?.map((item, id) => (
                             <List key={id + item}>
                                 <li>
-                                    <a target="_blank" href={item.link}>
-                                        {item.name}
-                                    </a>
+                                    <Image src={item.image} alt={item.name} />
+                                    <Textblock>
+                                        <Title>{item.name}</Title>
+                                        <p>
+                                            <span>{item.description}</span>
+                                        </p>
+                                        <p>
+                                            {" "}
+                                            Технологии:{" "}
+                                            <span>{item.technologies}</span>
+                                        </p>
+                                        <a target="_blank" href={item.url}>
+                                            <Button>Перейти</Button>
+                                        </a>
+                                    </Textblock>
                                 </li>
                             </List>
                         ))}

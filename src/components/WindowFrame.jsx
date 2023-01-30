@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     position: absolute;
     top: ${(props) => (props.minimize ? "0px" : `${props.show * 30}px`)};
     left: ${(props) => (props.minimize ? "0px" : `${props.show * 100}px`)};
-    /* left: 150px; */
+    transform: translate(0px, 0px);
     width: ${(props) => (props.minimize ? "100vw" : "350px")};
     height: ${(props) => props.minimize && "98vh"};
 `;
