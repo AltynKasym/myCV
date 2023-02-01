@@ -9,10 +9,11 @@ const List = styled.ul`
     gap: 5px;
 `;
 const CvInner = styled.div`
-    height: ${(props) => (props.collaps ? "98vh" : "320px")};
+    height: ${(props) => (props.minimize ? "220px" : "90vh")};
+    width: ${(props) => (props.minimize ? "337px" : "100vw")};
+    margin: ${(props) => (props.minimize && "-20px -11px") || "-20px -23px"};
     overflow-y: scroll;
-    margin: ${(props) => (props.collaps && "-21px -15px") || "-21px -15px"};
-    padding: 20px;
+    padding: 20px 30px;
     user-select: text;
     *:not(ul, li) {
         padding-bottom: 10px;
@@ -24,6 +25,7 @@ const CvInner = styled.div`
 
 export default function CV({ show, setShow, collaps, cvCollaps, image }) {
     const folder = useSelector((folder) => folder);
+    const [minimize, setMinimize] = useState(true);
 
     return (
         <div className={cvCollaps ? "window-collaps" : "window-uncollaps"}>
@@ -34,9 +36,10 @@ export default function CV({ show, setShow, collaps, cvCollaps, image }) {
                 collaps={collaps}
                 show={show}
                 image={image}
+                minimizeStatus={setMinimize}
             >
                 <div className="window__main">
-                    <CvInner collaps={collaps}>
+                    <CvInner minimize={minimize}>
                         <h2>{cv.name}</h2>
                         <h3>{cv.direction}</h3>
                         <p>{cv.summary}</p>

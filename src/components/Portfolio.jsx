@@ -2,6 +2,7 @@ import React from "react";
 import WindowFrame from "./WindowFrame";
 import { data } from "../data/data";
 import styled from "styled-components";
+import { useState } from "react";
 
 const List = styled.ul`
     display: flex;
@@ -15,30 +16,21 @@ const List = styled.ul`
 const Title = styled.h1`
     font-size: 0.9rem;
 `;
-const CvInner = styled.div`
-    /* height: 320px; */
-    margin: -21px -15px;
-    padding: 20px;
+const PortfolioInner = styled.div`
+    height: ${(props) => (props.minimize ? "220px" : "90vh")};
+    width: ${(props) => (props.minimize ? "337px" : "100vw")};
+    margin: ${(props) => (props.minimize && "-20px -11px") || "-20px -23px"};
+    padding: ${(props) =>
+        props.minimize ? "20px 20px 30px" : "20px 40px 50px"};
+    overflow-y: scroll;
+    padding: 20px 30px;
     user-select: text;
-    h3 {
-        padding-bottom: 20px;
+    *:not(ul, li) {
+        padding-bottom: 10px;
     }
     li {
-        padding-bottom: 15px;
-        /* padding-left: 8px; */
+        padding-bottom: 5px;
     }
-    a {
-        color: black;
-    }
-    /* ul {
-        &::before {
-            background-size: 15px 15px;
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            content: "";
-        }
-    } */
 `;
 
 const Wrapper = styled.div`
@@ -86,6 +78,8 @@ export default function Portfolio({
     contactCollaps,
     image,
 }) {
+    const [minimize, setMinimize] = useState(true);
+
     return (
         <div className={contactCollaps ? "window-collaps" : "window-uncollaps"}>
             <WindowFrame
@@ -95,9 +89,10 @@ export default function Portfolio({
                 show={show}
                 collaps={collaps}
                 image={image}
+                minimizeStatus={setMinimize}
             >
                 <div className="window__main">
-                    <CvInner>
+                    <PortfolioInner minimize={minimize}>
                         <h3>Портфолио</h3>
 
                         {data.projects?.map((item, id) => (
@@ -121,7 +116,7 @@ export default function Portfolio({
                                 </li>
                             </List>
                         ))}
-                    </CvInner>
+                    </PortfolioInner>
                 </div>
             </WindowFrame>
         </div>

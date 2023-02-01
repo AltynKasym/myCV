@@ -95,5 +95,13 @@ export const data = {
             image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
             url: "https://altynkasym.github.io/Memory_game/",
         },
+        {
+            name: "Учебный проект Интернет магазин",
+            description:
+                "Учебный проект интернет магазина с минимальными возможностями: поиска товаров, добавления и удаления из избранного, из корзины ",
+            technologies: "React, Sass, MUI",
+            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            url: "https://altynkasym.github.io/zeon_store/",
+        },
     ],
 };

@@ -22,7 +22,7 @@ import MyComp from "./MyComp";
 import Portfolio from "./Portfolio";
 import About from "./About";
 import { activeFolder, resetFolder } from "../store/FolderActiveSlice";
-// import Draggable from "react-draggable";
+import Draggable from "react-draggable";
 
 const Wrapper = styled.div`
     /* position: absolute;
@@ -180,8 +180,8 @@ function Desktop() {
                     image={MyComputerImage}
                 />
             </Wrapper>
-            {/* </Draggable> */}
-            {/* <Draggable> */}
+            {/* </Draggable>
+            <Draggable> */}
             <Wrapper
                 status={store.activeFolder[1]}
                 window={cvStatus}
@@ -195,8 +195,8 @@ function Desktop() {
                     image={ResumeImage}
                 />
             </Wrapper>
-            {/* </Draggable> */}
-            {/* <Draggable> */}
+            {/* </Draggable>
+            <Draggable> */}
             <Wrapper
                 status={store.activeFolder[2]}
                 window={contactStatus}
@@ -210,8 +210,8 @@ function Desktop() {
                     image={ExplorerImage}
                 />
             </Wrapper>
-            {/* </Draggable> */}
-            {/* <Draggable> */}
+            {/* </Draggable>
+            <Draggable> */}
             <Wrapper
                 status={store.activeFolder[3]}
                 window={portfolioStatus}
@@ -226,8 +226,8 @@ function Desktop() {
                     image={ExplorerImage}
                 />
             </Wrapper>
-            {/* </Draggable> */}
-            {/* <Draggable> */}
+            {/* </Draggable>
+            <Draggable> */}
             <Wrapper
                 status={store.activeFolder[4]}
                 window={aboutStatus}

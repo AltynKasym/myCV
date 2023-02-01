@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     left: ${(props) => (props.minimize ? "0px" : `${props.show * 100}px`)};
     transform: translate(0px, 0px);
     width: ${(props) => (props.minimize ? "100vw" : "350px")};
-    height: ${(props) => props.minimize && "98vh"};
+    height: ${(props) => props.minimize && "97vh"};
 `;
 
 const TitleWrapper = styled.div`
@@ -44,6 +44,7 @@ export default function WindowFrame({
     show,
     collaps,
     image,
+    minimizeStatus,
 }) {
     function createMenu(first, other) {
         return (
@@ -57,6 +58,7 @@ export default function WindowFrame({
     const [isMinimize, setIsMinimize] = useState(false);
     const toMinimize = () => {
         setIsMinimize((prev) => !prev);
+        minimizeStatus(isMinimize);
     };
 
     useEffect(() => {
