@@ -25,11 +25,7 @@ const Folder = styled.div`
     display: flex;
 `;
 
-export default function StartLine() {
-    const [isShowFolder, setIsShowFolder] = useState(false);
-    const showFolder = () => {
-        setIsShowFolder((prev) => !prev);
-    };
+export default function StartLine({ isShowFolder }) {
     const store = useSelector((folder) => folder);
 
     const sortedFolder = [...store.folder];
@@ -48,39 +44,26 @@ export default function StartLine() {
         store.folder[3].collaps,
         store.folder[4].collaps,
     ];
-    const collapsContact = () => {
-        activeWindow(2);
-        dispatch(uncollapsFolder("contacts"));
-    };
-    const collapsCV = () => {
-        activeWindow(1);
-        dispatch(uncollapsFolder("cv"));
-    };
-    const collapsMyComp = () => {
-        activeWindow(0);
-        dispatch(uncollapsFolder("myComputer"));
-    };
-    const collapsPortfolio = () => {
-        activeWindow(3);
-        dispatch(uncollapsFolder("portfolio"));
-    };
-    const collapsAbout = () => {
-        activeWindow(4);
-        dispatch(uncollapsFolder("about"));
-    };
-
-    function activeWindow(ind) {
-        dispatch(activeFolder(ind));
+    function dispatchCollaps(status, name) {
+        return function () {
+            status
+                ? dispatch(uncollapsFolder(name))
+                : dispatch(collapsFolder(name));
+        };
     }
+
+    const collapsMyComp = dispatchCollaps(myCompCollaps, "myComputer");
+    const collapsCV = dispatchCollaps(cvCollaps, "cv");
+    const collapsContact = dispatchCollaps(contactCollaps, "contacts");
+    const collapsPortfolio = dispatchCollaps(portfolioCollaps, "portfolio");
+    const collapsAbout = dispatchCollaps(aboutCollaps, "about");
+
     return (
         <div className="footer-line">
             <StartWindow show={isShowFolder} />
             <div className="footer">
                 <FooterDiv>
-                    <StartButton
-                        showFolder={showFolder}
-                        isShowFolder={isShowFolder}
-                    />
+                    <StartButton isShowFolder={isShowFolder} />
                     {sortedFolder
                         .sort((a, b) => a.status - b.status)
                         ?.map((item, id) => {

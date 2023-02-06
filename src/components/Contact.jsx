@@ -6,6 +6,7 @@ import styled from "styled-components";
 const List = styled.ul`
     display: flex;
     gap: 5px;
+    font-size: 0.9rem;
 `;
 const CvInner = styled.div`
     /* height: 320px; */

@@ -1,12 +1,9 @@
 import MyComputerImage from "../assets/media/images/MyComputer.ico";
 import FolderImage from "../assets/media/images/Folder.ico";
 import ResumeImage from "../assets/media/images/resume.ico";
-// import RecycleImage from "../assets/media/images/Recycle.ico";
 import InfoImage from "../assets/media/images/info.ico";
 import ExplorerImage from "../assets/media/images/Explorer.ico";
-// import OpenedWindow from "./MyComp";
 import { useEffect, useRef, useState } from "react";
-// import Message from "./Message";
 import CV from "./CV";
 import styled from "styled-components";
 import Contact from "./Contact";
@@ -60,56 +57,29 @@ function Desktop() {
         store.folder[4].collaps,
     ];
 
-    const showMyComp = () => {
-        myCompStatus
-            ? dispatch(closeFolder("myComputer"))
-            : dispatch(openFolder("myComputer"));
-    };
+    function dispatchClose(status, name) {
+        return function () {
+            status ? dispatch(closeFolder(name)) : dispatch(openFolder(name));
+        };
+    }
+    function dispatchCollaps(status, name) {
+        return function () {
+            status
+                ? dispatch(uncollapsFolder(name))
+                : dispatch(collapsFolder(name));
+        };
+    }
+    const showMyComp = dispatchClose(myCompStatus, "myComputer");
+    const showCV = dispatchClose(cvStatus, "cv");
+    const showContact = dispatchClose(contactStatus, "contacts");
+    const showPortfolio = dispatchClose(portfolioStatus, "portfolio");
+    const showAbout = dispatchClose(aboutStatus, "about");
 
-    const showCV = () => {
-        cvStatus ? dispatch(closeFolder("cv")) : dispatch(openFolder("cv"));
-    };
-
-    const showContact = () => {
-        contactStatus
-            ? dispatch(closeFolder("contacts"))
-            : dispatch(openFolder("contacts"));
-    };
-    const showPortfolio = () => {
-        portfolioStatus
-            ? dispatch(closeFolder("portfolio"))
-            : dispatch(openFolder("portfolio"));
-    };
-    const showAbout = () => {
-        aboutStatus
-            ? dispatch(closeFolder("about"))
-            : dispatch(openFolder("about"));
-    };
-    const collapsContact = () => {
-        contactCollaps
-            ? dispatch(uncollapsFolder("contacts"))
-            : dispatch(collapsFolder("contacts"));
-    };
-    const collapsCV = () => {
-        cvCollaps
-            ? dispatch(uncollapsFolder("cv"))
-            : dispatch(collapsFolder("cv"));
-    };
-    const collapsMyComp = () => {
-        myCompCollaps
-            ? dispatch(uncollapsFolder("myComputer"))
-            : dispatch(collapsFolder("myComputer"));
-    };
-    const collapsPortfolio = () => {
-        portfolioCollaps
-            ? dispatch(uncollapsFolder("portfolio"))
-            : dispatch(collapsFolder("portfolio"));
-    };
-    const collapsAbout = () => {
-        aboutCollaps
-            ? dispatch(uncollapsFolder("about"))
-            : dispatch(collapsFolder("about"));
-    };
+    const collapsMyComp = dispatchCollaps(myCompCollaps, "myComputer");
+    const collapsCV = dispatchCollaps(cvCollaps, "cv");
+    const collapsContact = dispatchCollaps(contactCollaps, "contacts");
+    const collapsPortfolio = dispatchCollaps(portfolioCollaps, "portfolio");
+    const collapsAbout = dispatchCollaps(aboutCollaps, "about");
 
     function createFolder(src, name) {
         return (
@@ -144,10 +114,6 @@ function Desktop() {
             dispatch(uncollapsFolder("about"));
         }
     }, [myCompStatus, cvStatus, contactStatus, portfolioStatus, aboutStatus]);
-
-    // useEffect(() => {
-    //     dispatch(resetFolder());
-    // }, [store.activeFolder]);
 
     return (
         <div className="labels">

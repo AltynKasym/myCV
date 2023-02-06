@@ -7,24 +7,19 @@ import store from "./store/Reducer";
 import { useState } from "react";
 
 function App() {
-    // // Активация окна
-    // const winQueue = [false, false, false, false, false];
-    // const [active, setActive] = useState(winQueue);
+    const [isShowFolder, setIsShowFolder] = useState(false);
 
-    // const activeWindow = function (id) {
-    //     console.log("id", id);
-    //     winQueue.forEach((item, ind) => {
-    //         id === ind ? (winQueue[ind] = true) : (winQueue[ind] = false);
-    //     });
+    function showFolder(e) {
+        e.target.classList.contains("footer__start")
+            ? setIsShowFolder((prev) => !prev)
+            : setIsShowFolder(false);
+    }
 
-    //     setActive(winQueue);
-    //     console.log("active", active);
-    // };
     return (
-        <div className="App">
+        <div className="App" onClick={showFolder}>
             <Provider store={store}>
                 <Desktop />
-                <StartLine />
+                <StartLine isShowFolder={isShowFolder} />
             </Provider>
         </div>
     );

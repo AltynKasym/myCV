@@ -7,6 +7,7 @@ import { useState } from "react";
 const List = styled.ul`
     display: flex;
     gap: 5px;
+    font-size: 0.9rem;
 
     li {
         display: flex;
@@ -17,7 +18,7 @@ const Title = styled.h1`
     font-size: 0.9rem;
 `;
 const PortfolioInner = styled.div`
-    height: ${(props) => (props.minimize ? "220px" : "90vh")};
+    height: ${(props) => (props.minimize ? "320px" : "90vh")};
     width: ${(props) => (props.minimize ? "337px" : "100vw")};
     margin: ${(props) => (props.minimize && "-20px -11px") || "-20px -23px"};
     padding: ${(props) =>
@@ -30,6 +31,9 @@ const PortfolioInner = styled.div`
     }
     li {
         padding-bottom: 5px;
+    }
+    h2 {
+        padding-bottom: 20px;
     }
 `;
 
@@ -53,8 +57,10 @@ const Textblock = styled.div`
     }
 `;
 const Image = styled.img`
-    width: 100px;
-    height: 70px;
+    width: ${(props) => (props.minimize ? "100px" : "250px")};
+    height: ${(props) => (props.minimize ? "70px" : "160px")};
+    /* width: 100px; */
+    /* height: 70px; */
 `;
 const Button = styled.button`
     padding: 5px 20px;
@@ -93,12 +99,16 @@ export default function Portfolio({
             >
                 <div className="window__main">
                     <PortfolioInner minimize={minimize}>
-                        <h3>Портфолио</h3>
+                        <h2>Портфолио</h2>
 
                         {data.projects?.map((item, id) => (
                             <List key={id + item}>
                                 <li>
-                                    <Image src={item.image} alt={item.name} />
+                                    <Image
+                                        src={item.image}
+                                        alt={item.name}
+                                        minimize={minimize}
+                                    />
                                     <Textblock>
                                         <Title>{item.name}</Title>
                                         <p>

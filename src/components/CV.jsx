@@ -9,17 +9,28 @@ const List = styled.ul`
     gap: 5px;
 `;
 const CvInner = styled.div`
-    height: ${(props) => (props.minimize ? "220px" : "90vh")};
+    height: ${(props) => (props.minimize ? "320px" : "90vh")};
     width: ${(props) => (props.minimize ? "337px" : "100vw")};
     margin: ${(props) => (props.minimize && "-20px -11px") || "-20px -23px"};
     overflow-y: scroll;
     padding: 20px 30px;
     user-select: text;
+    font-size: 0.9rem;
     *:not(ul, li) {
         padding-bottom: 10px;
     }
+
+    ul {
+        padding-left: 20px;
+    }
     li {
         padding-bottom: 5px;
+    }
+    h2 {
+        padding-bottom: 20px;
+    }
+    h3 {
+        padding-top: 20px;
     }
 `;
 
@@ -44,19 +55,21 @@ export default function CV({ show, setShow, collaps, cvCollaps, image }) {
                         <h3>{cv.direction}</h3>
                         <p>{cv.summary}</p>
                         <h3>{cv.skillsName}</h3>
-                        <ul>
-                            {cv.skills?.map((item, id) => (
-                                <List key={id + item}>
-                                    <em>{item.name}</em>
-                                    <li>{item.list}</li>
-                                </List>
-                            ))}
-                        </ul>
+
+                        {cv.skills?.map((item, id) => (
+                            <List key={id + item}>
+                                <em>{item.name}</em>
+                                <li>{item.list}</li>
+                            </List>
+                        ))}
+
                         <h3>{cv.expText}</h3>
                         <ul>
                             {cv.experience?.map((item, id) => (
                                 <div key={id + item}>
-                                    <h3>- {item.expPlace}</h3>
+                                    <h3>
+                                        <em>- {item.expPlace}</em>
+                                    </h3>
                                     <h3>{item.expPeriod}</h3>
                                     {item.expRespon?.map((item, id) => (
                                         <div key={id + item}>

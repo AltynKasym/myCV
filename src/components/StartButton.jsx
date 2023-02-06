@@ -1,6 +1,4 @@
-
-
-export default function StartButton({ showFolder, isShowFolder }) {
+export default function StartButton({ isShowFolder }) {
     return (
         <div
             className={
@@ -8,7 +6,6 @@ export default function StartButton({ showFolder, isShowFolder }) {
                     ? "footer__start press-btn-push"
                     : "footer__start press-btn-start"
             }
-            onClick={showFolder}
         >
             Пуск
         </div>

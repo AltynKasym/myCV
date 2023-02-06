@@ -2,7 +2,7 @@ export const data = {
     name: "Алтынбек Касымов",
     direction: "Frontend Разработчик",
     summary:
-        "Веб-разработчик с более чем 1,5-летним опытом работы с интерфейсом, веб-приложением и CRM, уверенно владеющий JavaScript, React, умеющий эффективно работать в команде и самостоятельно решать проблемы.",
+        "Веб-разработчик с опытом работы с интерфейсом, веб-приложением и CRM, уверенно владеющий JavaScript, React, умеющий эффективно работать в команде и самостоятельно решать проблемы.",
     skillsName: "Технические навыки",
     skills: [
         { name: "Языки:", list: "HTML/CSS, JavaScript, Typescript" },
@@ -18,7 +18,7 @@ export const data = {
     experience: [
         {
             expPlace: "Zeon, Бишкек ",
-            expPeriod: "Frontend разработчик (05/2021 - Present)",
+            expPeriod: "Frontend разработчик (05/2022 - Present)",
             expRespon: [
                 "адаптивная и кроссбраузерная верстка сайтов",
                 "Разработка и поддержка компонентной базы",
@@ -65,10 +65,10 @@ export const data = {
     projects: [
         {
             name: "Бизнес Практика ",
-            description: "Сайт для малого бизнеса состоящее из 4 страниц.",
+            description: "Сайт для малого бизнеса.",
             technologies:
                 "Pug, Sass, Bootstrap, Pixel Perfect, JavaScript, Webpack",
-            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            image: "https://raw.githubusercontent.com/AltynKasym/myCV/master/src/assets/photos/1.jpg",
             url: "https://altynkasym.github.io/business-practice/dist/",
         },
         {
@@ -76,7 +76,7 @@ export const data = {
             description:
                 "Математическая quiz-игра с двумя режимами: на время и без ограничения времени. Результат игрока записывается в турнирную таблицу и сортируется по возрастанию.",
             technologies: "HTML, Sass, JavaScript, Webpack",
-            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            image: "https://raw.githubusercontent.com/AltynKasym/myCV/master/src/assets/photos/2.jpg",
             url: "https://altynkasym.github.io/Math_Quiz/dist/index.html",
         },
         {
@@ -84,7 +84,7 @@ export const data = {
             description:
                 "Программа для создания ежедневных списков с возможностью удалять, переименовывать, отмечать как выполненные.",
             technologies: "Sass, React, MUI",
-            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            image: "https://raw.githubusercontent.com/AltynKasym/myCV/master/src/assets/photos/3.jpg",
             url: "https://altynkasym.github.io/Todo-app/    ",
         },
         {
@@ -92,7 +92,7 @@ export const data = {
             description:
                 "Игра на поиск похожих карточек. Результат игрока записывается в турнирную таблицу и сортируется по возрастанию.",
             technologies: "React, lodash",
-            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            image: "https://raw.githubusercontent.com/AltynKasym/myCV/master/src/assets/photos/4.jpg",
             url: "https://altynkasym.github.io/Memory_game/",
         },
         {
@@ -100,8 +100,14 @@ export const data = {
             description:
                 "Учебный проект интернет магазина с минимальными возможностями: поиска товаров, добавления и удаления из избранного, из корзины ",
             technologies: "React, Sass, MUI",
-            image: "https://raw.githubusercontent.com/AltynKasym/coupons/main/src/assets/images/noImage/no-image.jpg",
+            image: "https://raw.githubusercontent.com/AltynKasym/myCV/master/src/assets/photos/5.jpg",
             url: "https://altynkasym.github.io/zeon_store/",
         },
+    ],
+    about: [
+        "Добро пожаловать в прошлое. Меня зовут Алтынбек. Я фронтенд-разработчик. Мой стэк React JS.",
+        "Окончил факультет информационных технологий. Выбрал эту специальность потому что для меня программирование интересное и увлекательное занятие. К проектам стараюсь подходить творчески, поэтому фронтенд мне больше интересен.",
+        "Работал в трех разных сферах и научился быть эффективным командным игроком. Последние полтора года плотно занимаюсь программированием и программирование из хобби переросло в полноценное занятие.",
+        "Нравиться изучать новое, экспериментировать, создавать, развиваться всесторонне.",
     ],
 };

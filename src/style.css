@@ -315,6 +315,7 @@ a {
     grid-template-rows: 80px 80px 80px 80px 80px;
     grid-auto-flow: column; */
     grid-gap: 30px;
+    width: 150px;
 }
 
 figcaption {
